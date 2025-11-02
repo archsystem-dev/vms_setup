@@ -104,9 +104,9 @@ Redémarrer.
 
 ## Système Windows
 
-Pour obtenir de bonnes performances vous devez installer les drivers virtio.<br>
-Téléchargez ```Stable virtio-win ISO```
-Montez l'ISO dans un périphérique CD-ROM de la VM pour l'installer dans Windows.
+- Pour obtenir de bonnes performances vous devez installer les drivers virtio.
+- Téléchargez ```Stable virtio-win ISO```
+- Montez l'ISO dans un périphérique CD-ROM de la VM pour l'installer dans Windows.
 ```
 https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
 ```
