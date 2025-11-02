@@ -82,9 +82,9 @@ Exécutez le script depuis le dossier.
 sudo ./configurer_systeme.sh
 ```
 
-Si vous avez des options spécifiques de démarrage dans GRUB le script ne les écrasera pas.
-Paramétrage d'un dossier partagé Samba à la fin du script, commenter les lignes si ce n'est pas nécessaire.
-Redémarrer.
+- Si vous avez des options spécifiques de démarrage dans GRUB le script ne les écrasera pas.
+- Paramétrage d'un dossier partagé Samba à la fin du script, commenter les lignes si ce n'est pas nécessaire.
+- Redémarrer.
 
 
 ## Création de la VM
@@ -110,6 +110,6 @@ Redémarrer.
 ```
 https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
 ```
-Une fois installé, redémarrez la VM puis installez les drivers de la carte graphique.
-Redémarrez.
-Votre VM est prête à l'emploi avec un accès direct à votre deuxième GPU.
+- Une fois installé, redémarrez la VM puis installez les drivers de la carte graphique.
+- Redémarrez.
+- Votre VM est prête à l'emploi avec un accès direct à votre deuxième GPU.
