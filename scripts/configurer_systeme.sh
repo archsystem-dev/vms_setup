@@ -103,42 +103,6 @@ chown "$SUDO_USER:$SUDO_USER" "$SHARED_FOLDER"
 chmod 777 "$SHARED_FOLDER"
 echo "Dossier partagé créé (propriétaire : $SUDO_USER)."
 
-# --- Configuration des chemins par défaut pour KVM/QEMU ---
-echo "Configuration des chemins par défaut pour KVM/QEMU..."
-QEMU_CONF="/etc/libvirt/qemu.conf"
-# Remplace $SUDO_USER dans les chemins
-VM_STORAGE_DIR=$(echo "$VM_STORAGE_DIR" | sed "s|\$SUDO_USER|$SUDO_USER|")
-ISO_DIR=$(echo "$ISO_DIR" | sed "s|\$SUDO_USER|$SUDO_USER|")
-
-# Crée les répertoires s'ils n'existent pas
-mkdir -p "$VM_STORAGE_DIR" "$ISO_DIR"
-chown "$SUDO_USER:$SUDO_USER" "$VM_STORAGE_DIR" "$ISO_DIR"
-chmod 755 "$VM_STORAGE_DIR" "$ISO_DIR"
-
-# Vérifie et met à jour le chemin des disques virtuels
-if ! grep -q "^disk_image_dir = \"$VM_STORAGE_DIR\"" "$QEMU_CONF"; then
-    if grep -q "^disk_image_dir = " "$QEMU_CONF"; then
-        sed -i "s|^disk_image_dir = .*|disk_image_dir = \"$VM_STORAGE_DIR\"|" "$QEMU_CONF"
-    else
-        echo "disk_image_dir = \"$VM_STORAGE_DIR\"" >> "$QEMU_CONF"
-    fi
-    echo "Chemin des disques virtuels configuré à $VM_STORAGE_DIR."
-else
-    echo "Chemin des disques virtuels déjà configuré à $VM_STORAGE_DIR."
-fi
-
-# Vérifie et met à jour le chemin des ISOs
-if ! grep -q "^iso_image_dir = \"$ISO_DIR\"" "$QEMU_CONF"; then
-    if grep -q "^iso_image_dir = " "$QEMU_CONF"; then
-        sed -i "s|^iso_image_dir = .*|iso_image_dir = \"$ISO_DIR\"|" "$QEMU_CONF"
-    else
-        echo "iso_image_dir = \"$ISO_DIR\"" >> "$QEMU_CONF"
-    fi
-    echo "Chemin des ISOs configuré à $ISO_DIR."
-else
-    echo "Chemin des ISOs déjà configuré à $ISO_DIR."
-fi
-
 # Redémarre libvirt pour appliquer les modifications
 systemctl restart libvirtd
 echo "Service libvirt redémarré pour appliquer les nouveaux chemins."
