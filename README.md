@@ -10,7 +10,7 @@ GPU 1 : NVIDIA RTX 2080 Super
 GPU 2 : NVIDIA GT 730
 
 OS Host    : Ubuntu (Kubuntu) 24.04 LTS
-OS GUEST 1 : Windows 10 
+OS GUEST 1 : Windows 10
 OS GUEST 2 : Ubuntu (Kubuntu) 24.04 LTS
 OS GUEST 3 : Ubuntu (Server) 24.04 LTS
 ```
@@ -32,7 +32,7 @@ SVM   : Enabled
 Exécutez le script depuis le dossier.
 
 ```
-sudo ./verifier_environnement.sh
+sudo ./00_check_environment.sh.sh
 ```
 
 Cette commande retourne l'état de IOMMU et SVM ainsi que la liste des groupes IOMMU.
@@ -53,10 +53,10 @@ Trouvé 2 GPUs. Suffisant pour le passthrough.
 Veuillez identifier l'ID PCIe GPU Passthrough dans la liste suivante :
 09:00.0 VGA compatible controller: NVIDIA Corporation TU104 [GeForce RTX 2080 SUPER] (rev a1)
 0a:00.0 VGA compatible controller: NVIDIA Corporation GK208B [GeForce GT 730] (rev a1)
-Entrez l'ID PCIe du GPU Passthrough (ex. : 01:00.0) : 
+Entrez l'ID PCIe du GPU Passthrough (ex. : 01:00.0) :
 ```
 
-Dans cette configuration : 
+Dans cette configuration :
 
 ```
 0a:00.0
@@ -70,7 +70,7 @@ Attention nous trions ici que les VGA. Une carte graphique comporte au moins un 
 Exécutez le script depuis le dossier.
 
 ```
-sudo ./installer_paquets.sh
+sudo ./01_install_packages.sh
 ```
 
 
@@ -79,7 +79,7 @@ sudo ./installer_paquets.sh
 Exécutez le script depuis le dossier.
 
 ```
-sudo ./configurer_systeme.sh
+sudo ./02_configure_system.sh
 ```
 
 - Si vous avez des options spécifiques de démarrage dans GRUB le script ne les écrasera pas.
@@ -94,7 +94,7 @@ sudo ./configurer_systeme.sh
  - Un pour le VGA défini plus haut
  - Un pour l'Audio correspondant au meme périphérique
 
- Dans le cas de cette configuration : 
+ Dans le cas de cette configuration :
 
 ```
  0A:00.0 # VGA
